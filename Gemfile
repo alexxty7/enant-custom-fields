@@ -35,5 +35,5 @@ group :development, :test do
 end
 
 group :test do
-  gem 'json_matchers', '0.10.0'
+  gem 'json_matchers', '0.11.1'
 end
