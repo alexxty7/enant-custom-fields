@@ -1,0 +1,258 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users/{id}":
+    put:
+      summary: updates user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        description: User id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    "$schema": https://json-schema.org/draft-07/schema
+                    "$id": http://example.com/example.json
+                    title: Root Schema
+                    type: object
+                    default: {}
+                    required:
+                    - data
+                    - included
+                    additionalProperties: false
+                    properties:
+                      data:
+                        title: The data Schema
+                        type: object
+                        default: {}
+                        required:
+                        - id
+                        - type
+                        - attributes
+                        - relationships
+                        additionalProperties: false
+                        properties:
+                          id:
+                            title: The id Schema
+                            type: string
+                            default: ''
+                          type:
+                            title: The type Schema
+                            type: string
+                            default: ''
+                          attributes:
+                            title: The attributes Schema
+                            type: object
+                            default: {}
+                            required:
+                            - name
+                            additionalProperties: false
+                            properties:
+                              name:
+                                title: The name Schema
+                                type: string
+                                default: ''
+                          relationships:
+                            title: The relationships Schema
+                            type: object
+                            default: {}
+                            required:
+                            - custom_fields_values
+                            - custom_fields
+                            additionalProperties: false
+                            properties:
+                              custom_fields_values:
+                                title: The custom_fields_values Schema
+                                type: object
+                                default: {}
+                                required:
+                                - data
+                                additionalProperties: false
+                                properties:
+                                  data:
+                                    title: The data Schema
+                                    type: array
+                                    default: []
+                                    additionalItems: false
+                                    items:
+                                      title: A Schema
+                                      type: object
+                                      default: {}
+                                      required:
+                                      - id
+                                      - type
+                                      additionalProperties: false
+                                      properties:
+                                        id:
+                                          title: The id Schema
+                                          type: string
+                                          default: ''
+                                        type:
+                                          title: The type Schema
+                                          type: string
+                                          default: ''
+                              custom_fields:
+                                title: The custom_fields Schema
+                                type: object
+                                default: {}
+                                required:
+                                - data
+                                additionalProperties: false
+                                properties:
+                                  data:
+                                    title: The data Schema
+                                    type: array
+                                    default: []
+                                    additionalItems: false
+                                    items:
+                                      title: A Schema
+                                      type: object
+                                      default: {}
+                                      required:
+                                      - id
+                                      - type
+                                      additionalProperties: false
+                                      properties:
+                                        id:
+                                          title: The id Schema
+                                          type: string
+                                          default: ''
+                                        type:
+                                          title: The type Schema
+                                          type: string
+                                          default: ''
+                      included:
+                        title: The included Schema
+                        type: array
+                        default: []
+                        additionalItems: false
+                        items:
+                        - title: A Schema
+                          type: object
+                          default: {}
+                          required:
+                          - id
+                          - type
+                          - attributes
+                          additionalProperties: false
+                          properties:
+                            id:
+                              title: The id Schema
+                              type: string
+                              default: ''
+                            type:
+                              title: The type Schema
+                              type: string
+                              default: ''
+                            attributes:
+                              title: The attributes Schema
+                              type: object
+                              default: {}
+                              required:
+                              - value
+                              additionalProperties: false
+                              properties:
+                                value:
+                                  title: The value Schema
+                                  type: array
+                                  default: []
+                                  additionalItems: false
+                                  items:
+                                  - title: A Schema
+                                    type: string
+                                    default: ''
+                                  - title: A Schema
+                                    type: string
+                                    default: ''
+                        - title: A Schema
+                          type: object
+                          default: {}
+                          required:
+                          - id
+                          - type
+                          - attributes
+                          additionalProperties: false
+                          properties:
+                            id:
+                              title: The id Schema
+                              type: string
+                              default: ''
+                            type:
+                              title: The type Schema
+                              type: string
+                              default: ''
+                            attributes:
+                              title: The attributes Schema
+                              type: object
+                              default: {}
+                              required:
+                              - name
+                              - field_type
+                              - options
+                              additionalProperties: false
+                              properties:
+                                name:
+                                  title: The name Schema
+                                  type: string
+                                  default: ''
+                                field_type:
+                                  title: The field_type Schema
+                                  type: string
+                                  default: ''
+                                options:
+                                  title: The options Schema
+                                  type: array
+                                  default: []
+                                  additionalItems: false
+                                  items:
+                                  - title: A Schema
+                                    type: string
+                                    default: ''
+                                  - title: A Schema
+                                    type: string
+                                    default: ''
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: User name
+                custom_fields_values:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      required:
+                      - custom_field_id
+                      - value
+                      custom_field_id:
+                        type: integer
+                      value:
+                        type: string
+              required:
+              - name
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

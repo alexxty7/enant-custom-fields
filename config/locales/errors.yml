@@ -1,0 +1,5 @@
+en:
+  dry_validation:
+    errors:
+      custom_field_exists?: Custom field does't exists
+      valid_choice?: Field value not in the list
